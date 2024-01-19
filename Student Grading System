@@ -1,0 +1,70 @@
+#include <iostream>
+#include <stdio.h>
+#include <string>
+#include <iomanip>
+using namespace std;
+void calculate_high_low_marks(int &Highest_grade, int &Lowest_grade, int sub_mark)
+{
+    if (Highest_grade < sub_mark)
+    {
+        Highest_grade = sub_mark;
+    }
+    if (Lowest_grade > sub_mark || Lowest_grade == 0)
+    {
+        Lowest_grade = sub_mark;
+    }
+}
+
+int main()
+{
+    cout << setw(40) << "***WELCOME TO STUDENT REPORT CARD DETAIL***" << endl;
+    string name[5];
+    int number_of_student, Highest_grade = 0, Lowest_grade = 0;               // Student Name
+    int Mathematics[5], Science[5], Socialstudies[5], English[5], History[5]; // Subjects
+    cout << "Number of Report card: ";
+    cin >> number_of_student;
+    for (int i = 0; i < number_of_student; i++) // Getting Student Detail
+    {
+        cout << "\nEnter the name of the Student:";
+        cin >> name[i];
+        cout << "\nEnter Subject Grade:" << endl;
+
+        cout << "Mathematics Grade:";
+        cin >> Mathematics[i];
+        if (Highest_grade < Mathematics[i])
+        {
+            Highest_grade = Mathematics[i];
+        }
+        Lowest_grade = Mathematics[i];
+
+        cout << "Science Grade:";
+        cin >> Science[i];
+        calculate_high_low_marks(Highest_grade, Lowest_grade, Science[i]);
+
+        cout << "Socialstudies Grade:";
+        cin >> Socialstudies[i];
+        calculate_high_low_marks(Highest_grade, Lowest_grade, Socialstudies[i]);
+
+        cout << "History Grade:";
+        cin >> History[i];
+        calculate_high_low_marks(Highest_grade, Lowest_grade, History[i]);
+
+        cout << "English Grade:";
+        cin >> English[i];
+        calculate_high_low_marks(Highest_grade, Lowest_grade, English[i]);
+
+        float sum = Mathematics[i] + Science[i] + Socialstudies[i] + History[i] + English[i];
+
+        cout << "\nStudent Name:" << name[i] << endl;
+        cout << name[i] << " Report Card Detail-" << endl;
+        cout << "Mathematics Grade: " << Mathematics[i] << endl;
+        cout << "Science Grade: " << Science[i] << endl;
+        cout << "Socialstudies Grade: " << Socialstudies[i] << endl;
+        cout << "History Grade: " << History[i] << endl;
+        cout << "English Grade: " << English[i] << endl;
+        cout << "\n"
+             << name[i] << " Average marks:" << sum / 5 << endl;
+        cout << "\nHighest Grade: " << Highest_grade << endl;
+        cout << "Lowest Grade: " << Lowest_grade << endl;
+    }
+}
